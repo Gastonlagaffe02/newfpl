@@ -16,6 +16,7 @@ import UsersManager from './components/users/UsersManager';
 import LeaguesManager from './components/leagues/LeaguesManager';
 import UserLeaguesManager from './components/leagues/UserLeaguesManager';
 import MatchesManager from './components/matches/MatchesManager';
+import SimulationManager from './components/simulation/SimulationManager';
 import MyTeam from './components/fantasy/MyTeam';
 import LoginForm from './components/auth/LoginForm';
 import SignupForm from './components/auth/SignupForm';
@@ -33,7 +34,7 @@ function Layout({ children, isAdmin = true }: { children: React.ReactNode, isAdm
   }
 
   // If not admin, show work in progress page for admin routes
-  if (!isAdmin && ['/teams', '/players', '/users', '/matches'].includes(location.pathname)) {
+  if (!isAdmin && ['/teams', '/players', '/users', '/matches', '/simulation'].includes(location.pathname)) {
     return <WorkInProgress />;
   }
 
@@ -162,6 +163,17 @@ function AppRoutes() {
             <ProtectedRoute>
               <Layout isAdmin={isAdmin}>
                 {isAdmin ? <MatchesManager /> : <WorkInProgress />}
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/simulation"
+          element={
+            <ProtectedRoute>
+              <Layout isAdmin={isAdmin}>
+                {isAdmin ? <SimulationManager /> : <WorkInProgress />}
               </Layout>
             </ProtectedRoute>
           }

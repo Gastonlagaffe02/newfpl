@@ -22,6 +22,21 @@ export default function Header({ onMenuClick, user }: HeaderProps) {
   const userInitial = user?.email?.charAt(0).toUpperCase() || 'U';
   const userName = user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'User';
 
+  const getPageTitle = () => {
+    switch (location.pathname) {
+      case '/': return 'Dashboard';
+      case '/teams': return 'Teams';
+      case '/players': return 'Players';
+      case '/users': return 'Users';
+      case '/leagues': return 'Leagues';
+      case '/matches': return 'Matches';
+      case '/simulation': return 'Match Simulation';
+      case '/my-team': return 'My Team';
+      case '/fixtures': return 'Fixtures';
+      default: return '';
+    }
+  };
+
   return (
     <header className="bg-white shadow-sm border-b border-gray-200 px-4 sm:px-6 py-3">
       <div className="flex items-center justify-between">
@@ -35,12 +50,7 @@ export default function Header({ onMenuClick, user }: HeaderProps) {
             <Menu className="h-6 w-6" aria-hidden="true" />
           </button>
           <h1 className="text-lg md:text-xl font-semibold text-gray-900">
-            {location.pathname === '/' ? 'Dashboard' : ''}
-            {location.pathname === '/teams' ? 'Teams' : ''}
-            {location.pathname === '/players' ? 'Players' : ''}
-            {location.pathname === '/users' ? 'Users' : ''}
-            {location.pathname === '/leagues' ? 'Leagues' : ''}
-            {location.pathname === '/matches' ? 'Matches' : ''}
+            {getPageTitle()}
           </h1>
         </div>
         

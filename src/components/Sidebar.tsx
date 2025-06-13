@@ -10,7 +10,8 @@ import {
   Home,
   LogOut,
   X,
-  User
+  User,
+  Play
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -27,6 +28,7 @@ const adminNavigation = [
   { id: 'users', name: 'Users', path: '/users', icon: Shield },
   { id: 'leagues', name: 'Leagues', path: '/leagues', icon: Trophy },
   { id: 'matches', name: 'Real Matches', path: '/matches', icon: Calendar },
+  { id: 'simulation', name: 'Match Simulation', path: '/simulation', icon: Play },
   { id: 'analytics', name: 'Analytics', path: '/analytics', icon: BarChart3 },
   { id: 'settings', name: 'Settings', path: '/settings', icon: Settings },
 ];
